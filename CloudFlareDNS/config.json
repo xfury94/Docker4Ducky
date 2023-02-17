@@ -1,0 +1,28 @@
+{
+  "cloudflare": [
+    {
+      "authentication": {
+        "api_token": "TUA API TOKEN",
+        "api_key": {
+          "api_key": "NAO MEXAS",
+          "account_email": "NAO MEXAS"
+        }
+      },
+      "zone_id": "TUA ZONE ID",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "cloud",
+          "proxied": true
+        }
+      ]
+    }
+  ],
+  "a": true,
+  "aaaa": true,
+  "purgeUnknownRecords": true,
+  "ttl": 300
+}

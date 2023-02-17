@@ -1,0 +1,35 @@
+version: "3"
+volumes:
+  nextcloud-data:
+  nextcloud-db:
+
+networks:
+  backend:
+
+services:
+  nextcloud-app:
+    image: nextcloud
+    restart: always
+    volumes:
+      - nextcloud-data:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=TUAPASS
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=nextcloud-db
+    networks:
+      - backend
+
+  nextcloud-db:
+    image: mariadb
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - nextcloud-db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=TUAPASS
+      - MYSQL_PASSWORD=TUAPASS
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    networks:
+      - backend
